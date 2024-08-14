@@ -1,38 +1,29 @@
 package GLA.pattern;
 
+import java.util.Scanner;
+
 public class p_14 {
     public static void main(String[] arg){
-        int a=5;
-        int i=0;
-        while (i<a){
-            int j=0;
-            while (j<(a-i-1)){
-                System.out.print("  ");
+        Scanner sc=new Scanner(System.in);
+        int a=sc.nextInt();
+        int i=1;
+        int p=0;
+        int j=a;
+        while (i<2*a){
+            if (i>a){
                 j++;
+                p--;
             }
-            i++;
-            int s=i;
-            while(s>0){
-                System.out.print("* ");
-                s--;
+            else{
+            j--;
+            p++;
             }
-            System.out.println();
+            System.out.print("  ".repeat(j));
+            System.out.println("* ".repeat(p));
+        i++;
         }
-        int k=0;
-        while (k<a-1){
-            int j=-1;
-            while (j<k){
-                System.out.print("  ");
-                j++;
-            }
-            k++;
-            int p=k;
-            while(p<(a)){
-                System.out.print("* ");
-                p++;
-            }
             System.out.println();
         }
     }
 
-}
+
