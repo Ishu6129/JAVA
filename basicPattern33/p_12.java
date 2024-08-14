@@ -13,10 +13,11 @@ public class p_12 {
             int j=0;
             while(j<i+1){
                 j++;
-                if (!(j<i+1))
-                System.out.print("*  ");
-                else
-                System.out.print("* ! ");
+                if (!(j<i+1)){
+                System.out.print("*  ");}
+                else{
+                System.out.print("* ");
+                System.out.print("! ");}
             }
             i++;
             System.out.println();
