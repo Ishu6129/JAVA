@@ -1,0 +1,20 @@
+import java.util.*;
+public class Main {
+    public static void main(String args[]) {
+        Scanner sc = new Scanner(System.in);
+        int num=sc.nextInt();
+        int fnd=sc.nextInt();
+        int rem=0;
+        int count=0;
+        int cpy=num;
+        while (cpy>0){
+            rem=cpy%10;
+            if (rem==fnd){
+                count++;
+            }
+            cpy=cpy/10;
+            
+        }
+        System.out.print(count);
+    }
+}

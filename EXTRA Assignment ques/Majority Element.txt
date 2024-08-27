@@ -1,0 +1,36 @@
+import java.util.*;
+public class Main {
+    public static void main (String args[]) {
+        Scanner sc=new Scanner(System.in);
+        String sz=sc.nextLine();
+        String[] values = sc.nextLine().split(" ");
+        int cnt[]=new int[values.length];
+        int i =0;
+        int count=0;
+        int maxindex=0;
+        int j;
+            while(i < values.length){
+                j=0;
+                count=0;
+                while(j< values.length){
+                    if (values[i].equals(values[j])){
+                        count++;
+                    }
+                    j++;
+                }
+                cnt[i]=count;
+                i++;
+            }
+            i=0;
+            int max=0;
+            while(i< values.length){
+                if (cnt[i]>(values.length/2)){
+                    max=cnt[i];
+                    maxindex=i;
+                }
+                i++;
+            }
+            System.out.println(values[maxindex]);
+        
+    }
+}
