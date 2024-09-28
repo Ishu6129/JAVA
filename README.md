@@ -1,3 +1,3 @@
-Pattern 33 : https://drive.google.com/file/d/1x5ZrWPu4bzUvgpatOG8JTxaIBtvLILW_/view?usp=drive_link
+Pattern 33 : [https://drive.google.com/file/d/1_L2iSu5Kk1Cpi61F6_f_zrcKAV6w4SE5/view?usp=drive_link](https://drive.google.com/file/d/1_L2iSu5Kk1Cpi61F6_f_zrcKAV6w4SE5/view?usp=sharing)
 
 Assignment 3 : https://hack.codingblocks.com/app/contests/6685
