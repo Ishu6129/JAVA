@@ -1,0 +1,29 @@
+import java.util.*;
+public class Main {
+    public static void main(String args[]) {
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        int t,r,s,even,odd;
+        while(n>0){
+            int a=sc.nextInt();
+            t=a;even=0;odd=0;
+            while(t>0){
+                r=t%10;
+                if (!(r%2==0)){
+                    odd+=r;
+                }
+                else{
+                    even+=r;
+                }
+                t=t/10;
+            }
+            if (even%4==0 || odd%3==0){
+               System.out.println("Yes");
+            }
+            else{
+                System.out.println("No");
+            }
+            n--;
+        }
+    }
+}

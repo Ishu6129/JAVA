@@ -1,0 +1,21 @@
+class Solution {
+    public int[] twoSum(int[] nums, int target) {
+        int[] sm= new int[2];
+        for (int i=0;i<nums.length-1;i++){
+            if (find_match(i,nums,sm,target)){
+                break;
+            }
+        }
+        return sm;
+    }
+    public Boolean find_match(int i,int[] nums,int[] sm,int target){
+        for(int j=i+1;j<nums.length;j++){
+            if (nums[i]+nums[j]==target){
+                    sm[0]=i;
+                    sm[1]=j;
+                    return true;
+                    }
+        }
+        return false;
+    }
+}

@@ -1,0 +1,21 @@
+import java.util.*;
+public class Main {
+     public static void main(String args[]) {
+            Scanner sc=new Scanner( System.in);
+            String a=sc.next();
+            int t=Integer.parseInt(a);
+            int c=a.length();
+            int r;int s=0;
+            while(t>0){
+                r=t%10;
+                s+=Math.pow(r,c);
+                t/=10;
+            }
+            if (s==Integer.parseInt(a)){
+                System.out.println(true);
+            }
+            else{
+                System.out.println(false);
+            }
+        }
+}
