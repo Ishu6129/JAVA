@@ -1,0 +1,53 @@
+package Assignment_6;
+import java.util.*;
+public class mappedString {
+    public static void main(String args[]) {
+        String[] arr = {"", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"};
+        Scanner sc = new Scanner(System.in);
+        String ques = sc.nextLine();
+        List<String> l = new ArrayList<>();
+        List<List<String>> ans = new ArrayList<>();
+        partitioning(ques, l, ans);
+
+        for (int i = 0; i < ans.size(); i++) {
+            for (int j = 0; j < ans.get(i).size(); j++) {
+                String s = ans.get(i).get(j);
+                int conv = sti(s);
+                if (conv >= 1 && conv <= 26) {
+                    System.out.print(arr[conv]);
+                }
+            }
+            System.out.println();
+        }
+    }
+
+    public static void partitioning(String ques, List<String> l, List<List<String>> ans) {
+        if (ques.length() == 0) {
+            ans.add(new ArrayList<>(l));
+            return;
+        }
+        for (int cut = 1; cut <= ques.length(); cut++) {
+            String s = ques.substring(0, cut);
+            int num = sti(s);
+            if (num >= 1 && num <= 26) {
+                l.add(s);
+                partitioning(ques.substring(cut), l, ans);
+                l.remove(l.size() - 1);
+            }
+        }
+    }
+
+    public static int sti(String str) {
+        int conv = 0;
+        for (int i = 0; i < str.length(); i++) {
+            conv = (conv * 10) + ((int) str.charAt(i) - 48);
+        }
+        return conv;
+    }
+}
+
+//123
+
+//ABC
+//AW
+//LC
