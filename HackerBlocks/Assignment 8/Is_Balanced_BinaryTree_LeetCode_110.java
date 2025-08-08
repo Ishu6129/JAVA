@@ -63,7 +63,7 @@ public class Main {
             BalancedPair rbp=isBalanced(node.right);
             BalancedPair sbp=new BalancedPair();
             sbp.height=Math.max(lbp.height,rbp.height)+1;
-            sbp.isBalanced=Math.abs(lbp.height-rbp.height)<=1;
+            sbp.isBalanced=Math.abs(lbp.height-rbp.height)<=1 && lbp.isBalanced && rbp.isBalanced;
             return sbp;
 
 		}
