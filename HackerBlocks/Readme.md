@@ -8,4 +8,6 @@ Assignment 4 : https://hack.codingblocks.com/app/contests/6926 <br>
 
 Assignment 5 : https://hack.codingblocks.com/app/contests/6992 <br>
 
-Assignment 6 : https://hack.codingblocks.com/app/contests/7470
+Assignment 6 : https://hack.codingblocks.com/app/contests/7470 <br>
+
+Assignment 8 : https://hack.codingblocks.com/app/contests/8433
