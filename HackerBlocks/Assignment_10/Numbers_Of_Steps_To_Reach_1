@@ -1,0 +1,23 @@
+import java.util.*;
+public class Main {
+    public static void main(String args[]) {
+		Scanner sc=new Scanner(System.in);
+		int n=sc.nextInt();
+        int[] dp=new int[n+2];
+        Arrays.fill(dp,-1);
+		System.out.println(find(n,dp));
+    }
+	public static int find(int n,int[] dp){
+        if(n==1){
+            return 0;
+        }
+        if(n<1){
+            return 100001;
+        }
+        if(dp[n]!=-1) return dp[n];
+		if(n%2==0){
+            return dp[n]=1+find(n/2,dp);
+        }
+        return dp[n]=1+Math.min(find(n-1,dp),find(n+1,dp));
+	}
+}
