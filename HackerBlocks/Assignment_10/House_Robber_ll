@@ -1,0 +1,25 @@
+import java.util.*;
+public class Main {
+    public static void main(String args[]) {
+		Scanner sc=new Scanner(System.in);
+		int n=sc.nextInt();
+		int[] hs=new int[n];
+		for(int i=0;i<n;i++){
+			hs[i]=sc.nextInt();
+		}
+		int[] dp1=new int[n+1];
+        int[] dp2=new int[n+1];
+		Arrays.fill(dp1,-1);
+        Arrays.fill(dp2,-1);
+		System.out.print(Math.max(find(hs,0,n-1,dp1),find(hs,1,n,dp2)));
+    }
+	public static int find(int[] hs,int i,int j,int[] dp){
+		if(i>=j){
+			return 0;
+		}
+		if(dp[i]!=-1) return dp[i];
+		int pk=hs[i]+find(hs,i+2,j,dp);
+		int npk=find(hs,i+1,j,dp);
+		return dp[i]=Math.max(pk,npk);
+	}
+}
