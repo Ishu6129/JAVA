@@ -1,0 +1,31 @@
+import java.util.*;
+public class Main {
+	static int mod=1000000007;
+    public static void main(String args[]) {
+        Scanner sc=new Scanner(System.in);
+		int n=sc.nextInt();
+		int t=sc.nextInt();
+		int[] coins=new int[n];
+		for(int i=0;i<n;i++){
+			coins[i]=sc.nextInt();
+		}
+		int[][] dp=new int[n][t+1];
+		for(int[] i:dp){
+			Arrays.fill(i,-1);
+		}
+		System.out.print(find(coins,0,t,dp));
+    }
+	public static int find(int[] coins,int idx,int t,int[][] dp){
+		if(t==0){
+			return 1;
+		}
+		if (idx >= coins.length) return 0;
+		if(dp[idx][t]!=-1) return dp[idx][t];
+		int pk=0;
+		if(t-coins[idx]>=0){
+			pk=find(coins,idx,t-coins[idx],dp);
+		}
+		int np=find(coins,idx+1,t,dp);
+		return dp[idx][t]=(pk+np)%mod;
+	}
+}
