@@ -1,0 +1,18 @@
+import java.util.*;
+public class Main {
+    public static void main (String args[]) {
+		Scanner sc=new Scanner(System.in);
+		int n=sc.nextInt();
+		int[] memo = new int[n + 1];
+        System.out.print(climb(0,n,memo));
+    }
+    public static int climb(int cl,int n,int[] memo){
+        if(cl==n) {
+            return 1;
+        }
+        if(cl>n) return 0;
+        if(memo[cl]!=0) return memo[cl];
+        memo[cl]=climb(cl+1,n,memo)+climb(cl+2,n,memo);
+        return memo[cl];
+    }
+}
