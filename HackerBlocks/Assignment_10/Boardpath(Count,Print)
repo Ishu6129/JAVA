@@ -1,0 +1,25 @@
+import java.util.*;
+public class Main {
+	static int c=0;
+    public static void main(String args[]) {
+        Scanner sc=new Scanner(System.in);
+		int n=sc.nextInt();
+		int d=sc.nextInt();
+		path(n,d,"");
+		System.out.println();
+		System.out.println(c);
+    }
+	public static void path(int n,int d,String ans){
+		if(n==0){
+			System.out.print(ans+" ");
+			c++;
+			return;
+		}
+		if(n<0) return;
+		for(int i=1;i<=d;i++){
+			if(n-1>=0){
+				path(n-i,d,ans+i);
+			}
+		}
+	}
+}
