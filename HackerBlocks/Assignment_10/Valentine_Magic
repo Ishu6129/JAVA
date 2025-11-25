@@ -1,0 +1,35 @@
+import java.util.*;
+public class Main {
+    public static void main(String args[]) {
+		Scanner sc=new Scanner(System.in);
+        int nb=sc.nextInt();
+        int ng=sc.nextInt();
+        int[] boy=new int[nb];
+        int[] girl=new int[ng];
+        for(int i=0;i<nb;i++){
+            boy[i]=sc.nextInt();
+        }
+        for(int i=0;i<ng;i++){
+            girl[i]=sc.nextInt();
+        }
+        int[][] dp = new int[nb + 1][ng + 1];
+        for(int[] row : dp){
+            Arrays.fill(row, -1);
+        }
+        Arrays.sort(boy);
+        Arrays.sort(girl);
+        System.out.print(knapsack(boy,girl,0,0,dp));
+    }
+    public static int knapsack(int[] boy,int[] girl,int nb,int ng,int[][] dp){
+        if(nb==boy.length){
+            return 0;
+        }
+        if(ng==girl.length){
+            return (int)1e7;
+        }
+        if (dp[nb][ng]!=-1) return dp[nb][ng];
+        int sel=Math.abs(boy[nb]-girl[ng])+knapsack(boy,girl,nb+1,ng+1,dp);
+        int rej=knapsack(boy,girl,nb,ng+1,dp);
+        return dp[nb][ng]= Math.min(sel,rej);
+    }
+}
