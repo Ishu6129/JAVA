@@ -1,0 +1,24 @@
+import java.util.*;
+public class Main {
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[] price = new int[n];
+        for(int i = 0; i < n; i++) price[i] = sc.nextInt();
+        int l = sc.nextInt();
+        int[] dp = new int[l + 1];
+        Arrays.fill(dp, -1);
+        System.out.println(find(l, price, dp));
+    }
+
+    public static int find(int len, int[] price, int[] dp){
+        if(len == 0) return 0;
+        if(dp[len] != -1) return dp[len];
+        int best = 0;
+        for(int cut = 1; cut <= len; cut++){
+            int cur = price[cut - 1] + find(len - cut, price, dp);
+            if(cur > best) best = cur;
+        }
+        return dp[len] = best;
+    }
+}
