@@ -1,0 +1,27 @@
+import java.util.*;
+public class Main {
+    public static void main(String args[]) {
+        Scanner sc=new Scanner(System.in);
+		String s1=sc.nextLine();
+		String s2=sc.nextLine();
+		int[][] dp=new int[s1.length()+1][s2.length()+1];
+		for(int[] i:dp){
+			Arrays.fill(i,-1);
+		}
+		System.out.println(LIS(s1,s2,0,0,dp));
+    }
+	public static int LIS(String s1,String s2,int i,int j,int[][] dp){
+		if(i==s1.length() || j==s2.length()){
+			return 0;
+		}
+		if (dp[i][j]!=-1) return dp[i][j];
+		int ans=0;
+		if(s1.charAt(i)==s2.charAt(j)){
+			ans=1+LIS(s1,s2,i+1,j+1,dp);
+		}
+		else{
+			ans=Math.max(LIS(s1,s2,i+1,j,dp),LIS(s1,s2,i,j+1,dp));
+		}
+		return dp[i][j]=ans;
+	}
+}
