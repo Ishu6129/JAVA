@@ -1,0 +1,30 @@
+import java.util.*;
+
+public class Main {
+    public static void main(String args[]) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int cap = sc.nextInt();
+        int[] val = new int[cap];
+        for(int i = 0; i < cap; i++){
+            val[i] = sc.nextInt();
+        }
+        int[][] dp = new int[cap + 1][cap + 1];
+        for(int[] i : dp) Arrays.fill(i, -2);
+        int ans = find(val, cap, 0, dp);
+        if(ans >= Integer.MAX_VALUE / 2) ans = -1;
+        System.out.println(ans);
+    }
+
+    public static int find(int[] val, int cap, int idx, int[][] dp){
+        if(cap == 0) return 0;
+        if(idx == val.length) return Integer.MAX_VALUE / 2;
+        if(dp[idx][cap] != -2) return dp[idx][cap];
+        int pk = Integer.MAX_VALUE / 2;
+        if(val[idx] != -1 && idx + 1 <= cap){
+            pk = val[idx] + find(val, cap - (idx + 1), idx, dp);
+        }
+        int npk = find(val, cap, idx + 1, dp);
+        return dp[idx][cap] = Math.min(pk, npk);
+    }
+}
