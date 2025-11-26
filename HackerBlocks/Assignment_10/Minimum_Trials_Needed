@@ -1,0 +1,36 @@
+import java.util.*;
+class Main {
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int T = sc.nextInt();
+        while (T-- > 0) {
+            int K = sc.nextInt();
+            int N = sc.nextInt();
+            int[][] dp = new int[K + 1][N + 1];
+            for (int i = 0; i <= K; i++) {
+                Arrays.fill(dp[i], -1);
+            }
+            System.out.println(fun(K, N, dp));
+        }
+    }
+
+    static int fun(int k, int n, int[][] dp) {
+        if (n == 0 || n == 1 || k == 1) return n;
+        if (dp[k][n] != -1) return dp[k][n];
+        int lo = 1, hi = n, ans = n;
+        while (lo <= hi) {
+            int mid = (lo + hi) / 2;
+            int down = fun(k - 1, mid - 1, dp);
+            int up = fun(k, n - mid, dp);
+            int worst = 1 + Math.max(down, up);
+            ans = Math.min(ans, worst);
+            if (down < up) {
+                lo = mid + 1;
+            } else {
+                hi = mid - 1;
+            }
+        }
+        dp[k][n] = ans;
+        return ans;
+    }
+}
