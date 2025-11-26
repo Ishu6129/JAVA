@@ -1,0 +1,42 @@
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        int N = sc.nextInt();
+        int M = sc.nextInt();
+        int K = sc.nextInt();
+        int[] a = new int[N];
+        int[] b = new int[M];
+        for(int i = 0; i < N; i++) a[i] = sc.nextInt();
+        for(int i = 0; i < M; i++) b[i] = sc.nextInt();
+
+        int[][][] dp = new int[N + 1][M + 1][K + 1];
+        for(int i = 0; i <= N; i++){
+            for(int j = 0; j <= M; j++){
+                Arrays.fill(dp[i][j], -1);
+            }
+        }
+
+        int ans = fun(0, 0, K, N, M, a, b, dp);
+        System.out.println(ans);
+    }
+
+    static int fun(int i, int j, int k, int n, int m, int[] a, int[] b, int[][][] dp){
+        if(i == n || j == m) return 0;
+        if(dp[i][j][k] != -1) return dp[i][j][k];
+
+        int res = 0;
+        res = Math.max(res, fun(i + 1, j, k, n, m, a, b, dp));
+        res = Math.max(res, fun(i, j + 1, k, n, m, a, b, dp));
+
+        if(a[i] == b[j]){
+            res = Math.max(res, 1 + fun(i + 1, j + 1, k, n, m, a, b, dp));
+        } else if(k > 0){
+            res = Math.max(res, 1 + fun(i + 1, j + 1, k - 1, n, m, a, b, dp));
+        }
+
+        dp[i][j][k] = res;
+        return res;
+    }
+}
