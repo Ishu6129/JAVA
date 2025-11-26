@@ -1,0 +1,32 @@
+import java.util.*;
+class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int T = sc.nextInt();
+        StringBuilder sb = new StringBuilder();
+        while (T-- > 0) {
+            int N = sc.nextInt();
+            int a = 0, m = 0, o = 0;
+			
+            for (int i = 0; i < N; i++) {
+                int ca = sc.nextInt();
+                int cm = sc.nextInt();
+                int co = sc.nextInt();
+                if (i == 0) {
+                    a = ca;
+                    m = cm;
+                    o = co;
+                } else {
+                    int na = ca + Math.min(m, o);
+                    int nm = cm + Math.min(a, o);
+                    int no = co + Math.min(a, m);
+                    a = na;
+                    m = nm;
+                    o = no;
+                }
+            }
+            System.out.println(Math.min(a, Math.min(m, o)));
+        }
+    }
+}
+ 
