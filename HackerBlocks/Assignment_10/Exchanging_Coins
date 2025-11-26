@@ -1,0 +1,18 @@
+import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        long n = sc.nextLong();
+		HashMap<Long, Long> dp = new HashMap<>();
+        System.out.println(fun(n,dp));
+    }
+	public static long fun(long n,HashMap<Long, Long> dp) {
+        if (n == 0) return 0;
+        if (dp.containsKey(n))
+            return dp.get(n);
+        long option = fun(n / 2,dp) + fun(n / 3,dp) + fun(n / 4,dp);
+        long ans = Math.max(n, option);
+        dp.put(n, ans);
+        return ans;
+    }
+}
